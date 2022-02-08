@@ -1,5 +1,7 @@
+import time
+
 from config import Config
-from driver import ChromeBrowser
+from browser import ChromeBrowser
 from runner import Runner
 
 
@@ -13,7 +15,10 @@ def main():
     run.login()
     run.navigate_to_network()
     suggestions = run.get_suggestions()
-    run.connect_to_people(suggestions, 10)
+    run.connect_to_people(suggestions, 8)
+
+    time.sleep(3)
+
     run.end()
 
 

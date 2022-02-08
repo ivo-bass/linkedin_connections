@@ -1,9 +1,15 @@
 import yaml
 
+from credentials import get_credentials
+
 
 def get_configurations():
     with open("config.yaml") as config_file:
-        return yaml.safe_load(config_file)
+        configurations = yaml.safe_load(config_file)
+    if not configurations.get('auth'):
+        username, password = get_credentials()
+        configurations['auth'] = {'user': username, 'pass': password}
+    return configurations
 
 
 class Config:

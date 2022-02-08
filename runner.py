@@ -29,27 +29,27 @@ class Runner:
     def get_suggestions(self):
         suggestions = []
         try:
-            print("____________________________________")
             suggestions = self.driver.find_elements(
                 By.CSS_SELECTOR,
                 "button.artdeco-button.artdeco-button--2.artdeco-button--secondary.ember-view.full-width",
             )
-            print(suggestions)
         except:
-            print("FAILED")
+            print("SUGGESTIONS FAILED")
         finally:
-            print("____________________________________")
             return suggestions
 
     def connect_to_people(self, suggestions, count):
-        if not suggestions:
-            return
+        print("____________________________________")
         for number, person in enumerate(suggestions):
             if number == count:
                 break
-            print(person.get_attribute("aria-label").replace(" to connect", "-> DONE"))
-            person.click()
-        time.sleep(10)
+            try:
+                person.click()
+                print(person.get_attribute("aria-label").replace("to connect", "-> SUCCESS"))
+                time.sleep(1)
+            except:
+                print(person.get_attribute("aria-label").replace("to connect", "-> FAIL"))
+        print("____________________________________")
 
     def end(self):
         self.driver.close()
