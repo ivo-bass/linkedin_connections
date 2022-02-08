@@ -2,5 +2,5 @@ url:
   login: http://linkedin.com/login
   network: https://www.linkedin.com/mynetwork/
 auth:
-  pass: 85.abuza
-  user: ivailo.ignatoff@gmail.com
+  pass: pass
+  user: user
