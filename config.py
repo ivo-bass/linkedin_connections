@@ -3,9 +3,20 @@ import yaml
 from credentials import get_credentials
 
 
+def write_configurations():
+    with open("config.yaml", "w") as file:
+        data = {"url": {
+            "login": "http://linkedin.com/login",
+            "network": "https://www.linkedin.com/mynetwork/"}
+        }
+        yaml.safe_dump(data, file)
+
+
 def get_configurations():
     with open("config.yaml") as config_file:
         configurations = yaml.safe_load(config_file)
+    if not configurations:
+        write_configurations()
     if not configurations.get('auth'):
         username, password = get_credentials()
         configurations['auth'] = {'user': username, 'pass': password}
