@@ -1,7 +1,6 @@
 auth:
   user: user
   pass: pass
-driver_path: C:\webdriver\chromedriver_win32\chromedriver.exe
 url: 
   login: http://linkedin.com/login
   network: https://www.linkedin.com/mynetwork/

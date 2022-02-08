@@ -11,6 +11,5 @@ class Config:
         configurations = get_configurations()
         self.user = configurations["auth"]["user"]
         self.password = configurations["auth"]["pass"]
-        self.driver_path = configurations["driver_path"]
         self.login = configurations["url"]["login"]
         self.network = configurations["url"]["network"]

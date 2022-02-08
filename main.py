@@ -1,12 +1,12 @@
 from config import Config
-from driver import ChromeDriver
+from driver import ChromeBrowser
 from runner import Runner
 
 
 def main():
     conf = Config()
 
-    driver = ChromeDriver(conf.driver_path).driver
+    driver = ChromeBrowser().driver
 
     run = Runner(driver, conf)
 
@@ -18,5 +18,4 @@ def main():
 
 
 if __name__ == "__main__":
-    """"""
     main()
