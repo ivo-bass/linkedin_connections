@@ -2,6 +2,7 @@ import time
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from selenium.common.exceptions import WebDriverException
 
 
 class Runner:
@@ -10,14 +11,11 @@ class Runner:
         self.driver = driver
 
     def login(self) -> None:
-        # Load loggin page
         self.driver.get(self.conf.login)
 
-        # Get the login element and write username
         username = self.driver.find_element(By.ID, "username")
         username.send_keys(self.conf.user)
 
-        # Get the password element, write password and hit ENTER
         password = self.driver.find_element(By.ID, "password")
         password.send_keys(self.conf.password)
         password.send_keys(Keys.ENTER)
@@ -33,7 +31,7 @@ class Runner:
                 By.CSS_SELECTOR,
                 "button.artdeco-button.artdeco-button--2.artdeco-button--secondary.ember-view.full-width",
             )
-        except:
+        except WebDriverException:
             print("SUGGESTIONS FAILED")
         finally:
             return suggestions
@@ -47,7 +45,7 @@ class Runner:
                 person.click()
                 print(person.get_attribute("aria-label").replace("to connect", "-> SUCCESS"))
                 time.sleep(1)
-            except:
+            except WebDriverException:
                 print(person.get_attribute("aria-label").replace("to connect", "-> FAIL"))
         print("____________________________________")
 

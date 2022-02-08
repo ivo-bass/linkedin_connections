@@ -1,3 +1,5 @@
+import os
+
 import yaml
 
 from credentials import get_credentials
@@ -13,10 +15,10 @@ def write_configurations():
 
 
 def get_configurations():
+    if not os.path.exists("config.yaml"):
+        write_configurations()
     with open("config.yaml") as config_file:
         configurations = yaml.safe_load(config_file)
-    if not configurations:
-        write_configurations()
     if not configurations.get('auth'):
         username, password = get_credentials()
         configurations['auth'] = {'user': username, 'pass': password}
