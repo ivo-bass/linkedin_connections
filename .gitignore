@@ -8,4 +8,6 @@ token.txt
 
 .python-version
 
-config.yaml
+credentials.yaml
+
+info.log

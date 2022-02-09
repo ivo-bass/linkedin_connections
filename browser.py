@@ -13,4 +13,3 @@ def setup():
 class ChromeBrowser:
     def __init__(self) -> None:
         self.driver = setup()
-
