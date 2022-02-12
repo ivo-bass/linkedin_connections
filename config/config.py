@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 import yaml
 
-from credentials import get_credentials
+from config.credentials import get_credentials
 
 
 @dataclass
@@ -20,7 +20,7 @@ def setup():
 
 
 def get_configurations():
-    with open("config.yaml") as config_file:
+    with open("config/config.yaml") as config_file:
         configurations = yaml.safe_load(config_file)
     urls = configurations["urls"]
     logging = configurations["logging"]

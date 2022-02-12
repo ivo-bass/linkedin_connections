@@ -1,25 +1,20 @@
-import time
-
-from browser import ChromeBrowser
-from config import setup
-from logger import Logger
-from runner import Runner
+from core.browser import ChromeBrowser
+from config import config
+from core.logger import Logger
+from core.runner import Runner
 
 
 def main():
-    config = setup()
-    logger = Logger(config.logging).logger
-    logger.info("Start program")
-
+    conf = config.setup()
+    logger = Logger(conf.logging).logger
     driver = ChromeBrowser().driver
+    runner = Runner(driver, conf, logger)
 
-    runner = Runner(driver, config, logger)
     runner.login()
     runner.navigate_to_network()
     suggestions = runner.get_suggestions()
-    runner.connect_to_people(suggestions, 8)
+    runner.connect_to_people(suggestions, 12)
 
-    time.sleep(3)
     runner.end()
     logger.info("Stop program")
 

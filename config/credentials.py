@@ -4,7 +4,7 @@ import yaml
 
 
 def read_credentials():
-    with open("credentials.yaml") as file:
+    with open("config/credentials.yaml") as file:
         credentials = yaml.safe_load(file)
     username = credentials['auth']['user']
     password = credentials['auth']['pass']
@@ -21,11 +21,11 @@ def prompt_credentials():
 
 
 def write_credentials(username, password):
-    with open('credentials.yaml', 'w') as stream:
+    with open('config/credentials.yaml', 'w') as stream:
         yaml.safe_dump({'auth': {'user': username, 'pass': password}}, stream)
 
 
 def get_credentials():
-    if os.path.exists("credentials.yaml"):
+    if os.path.exists("config/credentials.yaml"):
         return read_credentials()
     return prompt_credentials()

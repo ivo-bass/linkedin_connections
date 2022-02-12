@@ -25,7 +25,7 @@ class Runner:
     def navigate_to_network(self):
         self.driver.get(self.conf.urls["network"])
         self.logger.info("Navigated to Network")
-        time.sleep(10)
+        time.sleep(8)
 
     def get_suggestions(self):
         suggestions = []
